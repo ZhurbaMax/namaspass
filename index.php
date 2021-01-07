@@ -7,3 +7,6 @@ use app\Classes\ClassOne;
 $getInfo = new ClassOne();
 echo $getInfo->getInfo();
 
+$getUser = new ClassOne();
+$getUser ->getUser();
+

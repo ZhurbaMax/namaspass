@@ -1,8 +1,8 @@
 <?php
 
 namespace app\Classes;
-use app\Classes\Two\ClassTwo;
 
+use app\Classes\Two\ClassTwo;
 class ClassOne
 {
     public function getInfo()
@@ -11,5 +11,9 @@ class ClassOne
         $b = $setInfo->setInfo('name');
         return $b;
     }
-
+    public function getUser()
+    {
+        $setUser = new ClassTwo();
+        $setUser->additionUser('testdb@gmail.com','123456789','testDb','Ukraine','Kyiv');
+    }
 }
