@@ -1,5 +1,5 @@
 <?php
-// получаем все наши namespace в $myClass
+// получаем все наши use в $myClass
 //в нашем случае получаем $myClass = app\Classes\ClassOne, $myClass = app\Classes\Two\ClassTwo
 spl_autoload_register(function ($myClass) {
 
