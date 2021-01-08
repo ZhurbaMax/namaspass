@@ -2,8 +2,6 @@
 
 namespace app\Classes\core;
 
-use app\Classes\controllers\MainController;
-
 class Router
 {
 
@@ -16,18 +14,11 @@ class Router
         ];
         if (isset($routing[$route])){
             $connroller = 'app\\Classes\\controllers\\' . $routing[$route]['controller'] . 'Controller';
-            //$connroller = $routing[$route]['controller'] . 'Controller';
             $connroller_obj = new $connroller();
-            //$connroller_obj->$routing[$route]['action']();
             $connroller_obj->{$routing[$route]['action']}();
-
         }else{
             return 'нет пути';
         }
-
-        //$cont = new MainController();
-        //$cont->auth();
-        //$cont->index();
-
     }
 }
+

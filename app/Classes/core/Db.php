@@ -14,4 +14,3 @@ class Db
         $this->dbConn = new PDO($dsn, USER, PASSWORD);
     }
 }
-

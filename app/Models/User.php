@@ -1,11 +1,10 @@
 <?php
 
-
-namespace app\Classes;
+namespace app\Models;
 
 use app\Classes\core\Db;
 
-class Auth
+class User
 {
     public function checkAuthForm($checkLogin,$checkPassword,$checkErrors)
     {
@@ -16,7 +15,6 @@ class Auth
             $checkErrors[] = '* please enter password';
         }
         return $checkErrors;
-
     }
 
     public function authUser($loginUser,$passwordUser)
@@ -31,10 +29,8 @@ class Auth
         $id = $result2->fetchColumn();
         if (!empty($id)){
             $_SESSION['user_id'] = $id;
-            die('вы авторизованы');
-
         }else{
-            echo 'вы не авторизованы';
+            return false;
         }
     }
 }

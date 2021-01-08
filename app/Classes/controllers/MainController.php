@@ -2,34 +2,35 @@
 
 namespace app\Classes\controllers;
 
-use app\Classes\Auth;
+use app\Models\User;
 
 class MainController
 {
     public function index()
     {
-        //echo 'это корень сайта';
         include ('views/home.php');
     }
 
     public function auth()
     {
+        if (!empty($_SESSION['user_id'])){
+            die('вы авторизованы');
+        }
         $errors = [];
         $check = [];
         $password = $_POST['password'];
         $login = $_POST['login'];
         if (!empty($_POST)) {
-            $checkAuthForm = new Auth();
+            $checkAuthForm = new User();
             $check =  $checkAuthForm->checkAuthForm($login,$password,$errors);
         }
         if (empty($check)) {
-            $authUser = new Auth();
+            $authUser = new User();
             $authUser->authUser($login, $password);
         }else{
             $errors = $check;
         }
         include ('views/auth.php');
-
     }
 
     }

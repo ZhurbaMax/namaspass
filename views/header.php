@@ -4,7 +4,7 @@
 
 <head>
     <title> Authorization</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
 </head>
 
 <body>
