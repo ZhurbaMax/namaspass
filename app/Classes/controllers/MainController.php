@@ -2,6 +2,7 @@
 
 namespace app\Classes\controllers;
 
+use app\Models\Shop;
 use app\Models\User;
 
 class MainController
@@ -9,6 +10,19 @@ class MainController
     public function index()
     {
         include ('views/home.php');
+    }
+
+    public function shop()
+    {
+        $shopProducts = new Shop();
+        $wiewsProduct = $shopProducts->shopProducts();
+        $newArray = [];
+        foreach ($wiewsProduct as $items=>$value){
+            foreach ($value as $item=>$val){
+                $newArray[$item]=$val;
+            }
+        }
+        include ('views/shop.php');
     }
 
     public function auth()

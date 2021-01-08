@@ -10,8 +10,6 @@ class User extends Db
     public function authUser($loginUser,$passwordUser)
     {
         $passwordUserSalt = sha1($passwordUser);
-        //$dbConnec = new Db();
-        //$dbConnect = $dbConnec->dbConn;
         $dbConnect = $this->dbConn;
         $result2 = $dbConnect->prepare("SELECT id FROM users WHERE login = :loginUser and password = :passwordUserSalt");
         $result2->bindParam(':passwordUserSalt', $passwordUserSalt);
