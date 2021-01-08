@@ -17,4 +17,14 @@ class Shop extends Db
         return $products;
     }
 
+    public function searchProductForTitle($titleProduct)
+    {
+        $dbConnect = $this->dbConn;
+        $result2 = $dbConnect->prepare("SELECT * FROM products WHERE title = :titleProduct");
+        $result2->bindParam(':titleProduct', $titleProduct);
+        $result2->execute();
+        $searchTitleProduct = $result2->fetchAll();
+        return $searchTitleProduct;
+    }
+
 }

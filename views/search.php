@@ -1,22 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <div class="h2 mt-5 mb-5" style="text-align: center" > Shop </div>
+            <div class="h2 mt-5 mb-5" style="text-align: center" > Searching results </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-3">
-            <form method="post">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Search for title</label>
-                    <input type="title" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title">
-                </div>
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-        </div>
-        <div class="col-9">
+        <div class="col-12">
             <div class="row">
-                <? foreach ($wiewsProduct as $item ): ?>
+                <? foreach ($resultSearchProduct as $item ): ?>
                     <div class="col-4">
                         <div class="card" style="width: 16rem;">
                             <img class="card-img-top" src=" <?php echo $item['image']; ?> " alt="Card image cap">
@@ -33,4 +24,3 @@
 
     </div>
 </div>
-

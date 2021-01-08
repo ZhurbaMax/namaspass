@@ -14,6 +14,21 @@ class MainController
 
     public function shop()
     {
+        if (!empty($_POST['title'])){
+            //echo 'выполняется поиск';
+            $titleProd = $_POST['title'];
+            $searchProduct = new Shop();
+            $searchProduct->searchProductForTitle($titleProd);
+            $resultSearchProduct = $searchProduct->searchProductForTitle($titleProd);
+            $newArr = [];
+            foreach ($resultSearchProduct as $items=>$value){
+                foreach ($value as $item=>$val){
+                    $newArr[$item]=$val;
+                }
+                include ('views/search.php');
+            }
+        }
+        if (empty($_POST['title'])){
         $shopProducts = new Shop();
         $wiewsProduct = $shopProducts->shopProducts();
         $newArray = [];
@@ -23,6 +38,7 @@ class MainController
             }
         }
         include ('views/shop.php');
+        }
     }
 
     public function auth()
@@ -117,6 +133,5 @@ class MainController
         }
         return $checkErrors;
     }
-
 
 }
