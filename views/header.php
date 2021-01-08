@@ -15,6 +15,9 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/registration">Registration</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/auth">Authorization</a>
             </li>
         </ul>

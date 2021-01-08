@@ -33,6 +33,31 @@ class MainController
         include ('views/auth.php');
     }
 
+    public function registration()
+    {
+        if (!empty($_SESSION['user_id'])){
+            die('вы авторизованы');
+        }
+        $errors = [];
+        $check = [];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $login = $_POST['login'];
+        $country = $_POST['country'];
+        $city = $_POST['city'];
+        if (!empty($_POST)){
+            $checkRegistrationForm = new MainController();
+            $check = $checkRegistrationForm->checkRegistrationForm($email,$password,$login,$country,$city,$errors);
+        }
+        if (empty($check)){
+            $additionUser = new User();
+            $additionUser->additionUser($email,$password,$login,$country,$city);
+        }else{
+            $errors = $check;
+        }
+        include ('views/registration.php');
+    }
+
     public function checkAuthForm($checkLogin,$checkPassword,$checkErrors)
     {
         if (empty($checkLogin)) {
@@ -40,6 +65,41 @@ class MainController
         }
         if (empty($checkPassword)) {
             $checkErrors[] = '* please enter password';
+        }
+        return $checkErrors;
+    }
+
+    function checkRegistrationForm($checkEmail,$checkPassword,$checkLogin,$checkCountry,$checkCity,$checkErrors){
+
+        if (empty($checkEmail)){
+            $checkErrors[] = '* please enter email';
+        }
+        if (empty($checkPassword)){
+            $checkErrors[] = '* please enter password';
+        }
+        if (empty($checkLogin)){
+            $checkErrors[] = '* please enter login';
+        }
+        if (empty($checkCountry)){
+            $checkErrors[] = '* please enter country';
+        }
+        if (empty($checkCity)){
+            $checkErrors[] = '* please enter city';
+        }
+        if (strlen($checkEmail) > 90){
+            $checkErrors[] = '* you have exceeded the limit of 90 characters';
+        }
+        if (strlen($checkPassword) < 6){
+            $checkErrors[] = ' * you have not entered enough characters, please enter more than 6';
+        }
+        if (strlen($checkLogin) > 100){
+            $checkErrors[] = '* you have exceeded the limit of 100 characters';
+        }
+        if (strlen($checkCountry) > 100){
+            $checkErrors[] = '* you have exceeded the limit of 100 characters';
+        }
+        if (strlen($checkCity) > 100){
+            $checkErrors[] = '* you have exceeded the limit of 100 characters';
         }
         return $checkErrors;
     }

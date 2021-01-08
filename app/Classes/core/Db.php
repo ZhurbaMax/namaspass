@@ -6,7 +6,7 @@ use PDO;
 
 class Db
 {
-    public $dbConn;
+    protected $dbConn;
     public function __construct()
     {
         require_once ('config/dbConfig.php');

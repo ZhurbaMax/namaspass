@@ -7,7 +7,7 @@ use app\Classes\core\Router;
 include ('views/header.php');
 
 $loginUser = new Router();
-$loginUser->loginUser();
+$loginUser->menuRouting();
 
 include ('views/footer.php');
 
