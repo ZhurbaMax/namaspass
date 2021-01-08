@@ -21,7 +21,7 @@ class MainController
         $password = $_POST['password'];
         $login = $_POST['login'];
         if (!empty($_POST)) {
-            $checkAuthForm = new User();
+            $checkAuthForm = new MainController();
             $check =  $checkAuthForm->checkAuthForm($login,$password,$errors);
         }
         if (empty($check)) {
@@ -33,4 +33,16 @@ class MainController
         include ('views/auth.php');
     }
 
+    public function checkAuthForm($checkLogin,$checkPassword,$checkErrors)
+    {
+        if (empty($checkLogin)) {
+            $checkErrors[] = '* please enter login';
+        }
+        if (empty($checkPassword)) {
+            $checkErrors[] = '* please enter password';
+        }
+        return $checkErrors;
     }
+
+
+}

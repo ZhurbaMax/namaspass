@@ -6,16 +6,6 @@ use app\Classes\core\Db;
 
 class User
 {
-    public function checkAuthForm($checkLogin,$checkPassword,$checkErrors)
-    {
-        if (empty($checkLogin)) {
-            $checkErrors[] = '* please enter login';
-        }
-        if (empty($checkPassword)) {
-            $checkErrors[] = '* please enter password';
-        }
-        return $checkErrors;
-    }
 
     public function authUser($loginUser,$passwordUser)
     {
