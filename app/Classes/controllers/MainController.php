@@ -15,7 +15,6 @@ class MainController
     public function shop()
     {
         if (!empty($_POST['title'])){
-            //echo 'выполняется поиск';
             $titleProd = $_POST['title'];
             $searchProduct = new Shop();
             $searchProduct->searchProductForTitle($titleProd);
@@ -25,8 +24,35 @@ class MainController
                 foreach ($value as $item=>$val){
                     $newArr[$item]=$val;
                 }
-                include ('views/search.php');
             }
+            include ('views/search.php');
+            die();
+        }
+        if (!empty($_GET['a'])){
+            $shopMaxfilter = new Shop();
+            $shopMaxfilter->shopMaxfilter();
+            $wiewsProduct = $shopMaxfilter->shopMaxfilter();
+            $newArr = [];
+            foreach ($wiewsProduct as $items=>$value){
+                foreach ($value as $item=>$val){
+                    $newArr[$item]=$val;
+                }
+            }
+            include ('views/shop.php');
+            die();
+        }
+        if (!empty($_GET['b'])){
+            $shopMaxfilter = new Shop();
+            $shopMaxfilter->shopMinfilter();
+            $wiewsProduct = $shopMaxfilter->shopMinfilter();
+            $newArr = [];
+            foreach ($wiewsProduct as $items=>$value){
+                foreach ($value as $item=>$val){
+                    $newArr[$item]=$val;
+                }
+            }
+            include ('views/shop.php');
+            die();
         }
         if (empty($_POST['title'])){
         $shopProducts = new Shop();
@@ -99,8 +125,8 @@ class MainController
         return $checkErrors;
     }
 
-    function checkRegistrationForm($checkEmail,$checkPassword,$checkLogin,$checkCountry,$checkCity,$checkErrors){
-
+    function checkRegistrationForm($checkEmail,$checkPassword,$checkLogin,$checkCountry,$checkCity,$checkErrors)
+    {
         if (empty($checkEmail)){
             $checkErrors[] = '* please enter email';
         }

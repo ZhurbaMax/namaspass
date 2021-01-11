@@ -27,4 +27,23 @@ class Shop extends Db
         return $searchTitleProduct;
     }
 
+    public function shopMaxfilter()
+    {
+        $dbConnect = $this->dbConn;
+        $result2 = $dbConnect->prepare("SELECT * FROM products ORDER BY price DESC ");
+        $result2->bindParam(':titleProduct', $titleProduct);
+        $result2->execute();
+        $maxFilterProduct = $result2->fetchAll();
+        return $maxFilterProduct;
+    }
+    public function shopMinfilter()
+    {
+        $dbConnect = $this->dbConn;
+        $result2 = $dbConnect->prepare("SELECT * FROM products ORDER BY price ASC ");
+        $result2->bindParam(':titleProduct', $titleProduct);
+        $result2->execute();
+        $minFilterProduct = $result2->fetchAll();
+        return $minFilterProduct;
+    }
+
 }

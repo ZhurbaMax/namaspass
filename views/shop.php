@@ -13,6 +13,11 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Search</button>
             </form>
+            <div class="filter-price">
+                <h6>Filter price</h6>
+                <button type="button" class="btn btn-danger"> <a href="?a=max">Max price</a></button>
+                <button type="button" class="btn btn-warning"><a href="?b=min">Min price</a></button>
+            </div>
         </div>
         <div class="col-9">
             <div class="row">
