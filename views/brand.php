@@ -35,18 +35,20 @@
         </div>
         <div class="col-9">
             <div class="row">
-                <? foreach ($wiewsProduct as $item ): ?>
+                <? foreach ($wiewsProduct as $items ): ?>
+                    <? foreach ($items as $item ): ?>
                     <div class="col-4">
                         <div class="card" style="width: 16rem;">
                             <img class="card-img-top" src=" <?php echo $item['image']; ?> " alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $item['title']; ?> </h5>
-                                <p class="card-text brand" style="color: #1c7430; font-weight: bold;" ><?php echo $item['brand']; ?></p>
+                                <p class="card-text brand" style="color: #1c7430; font-weight: bold;"><?php echo $item['brand']; ?></p>
                                 <p class="card-text"><?php echo $item['description']; ?></p>
                                 <a  class="btn btn-primary">Price <?php echo $item['price']; ?> $</a>
                             </div>
                         </div>
                     </div>
+                    <? endforeach; ?>
                 <? endforeach; ?>
             </div>
         </div>

@@ -2,7 +2,6 @@
 
 namespace app\Classes\controllers;
 
-use app\Models\Shop;
 use app\Models\User;
 
 class MainController
@@ -10,61 +9,6 @@ class MainController
     public function index()
     {
         include ('views/home.php');
-    }
-
-    public function shop()
-    {
-        if (!empty($_POST['title'])){
-            $titleProd = $_POST['title'];
-            $searchProduct = new Shop();
-            $searchProduct->searchProductForTitle($titleProd);
-            $resultSearchProduct = $searchProduct->searchProductForTitle($titleProd);
-            $newArr = [];
-            foreach ($resultSearchProduct as $items=>$value){
-                foreach ($value as $item=>$val){
-                    $newArr[$item]=$val;
-                }
-            }
-            include ('views/search.php');
-            die();
-        }
-        if (!empty($_GET['a'])){
-            $shopMaxfilter = new Shop();
-            $shopMaxfilter->shopMaxfilter();
-            $wiewsProduct = $shopMaxfilter->shopMaxfilter();
-            $newArr = [];
-            foreach ($wiewsProduct as $items=>$value){
-                foreach ($value as $item=>$val){
-                    $newArr[$item]=$val;
-                }
-            }
-            include ('views/shop.php');
-            die();
-        }
-        if (!empty($_GET['b'])){
-            $shopMaxfilter = new Shop();
-            $shopMaxfilter->shopMinfilter();
-            $wiewsProduct = $shopMaxfilter->shopMinfilter();
-            $newArr = [];
-            foreach ($wiewsProduct as $items=>$value){
-                foreach ($value as $item=>$val){
-                    $newArr[$item]=$val;
-                }
-            }
-            include ('views/shop.php');
-            die();
-        }
-        if (empty($_POST['title'])){
-        $shopProducts = new Shop();
-        $wiewsProduct = $shopProducts->shopProducts();
-        $newArray = [];
-        foreach ($wiewsProduct as $items=>$value){
-            foreach ($value as $item=>$val){
-                $newArray[$item]=$val;
-            }
-        }
-        include ('views/shop.php');
-        }
     }
 
     public function auth()

@@ -12,7 +12,7 @@ class Router
             "/"             => ['controller' => "Main", 'action' => 'index'],
             "/auth"         => ['controller' => "Main", 'action' => 'auth'],
             "/registration" => ['controller' => "Main", 'action' => 'registration'],
-            "/shop"         => ['controller' => "Main", 'action' => 'shop'],
+            "/shop"         => ['controller' => "Shop", 'action' => 'shop'],
         ];
         if (isset($routing[$route])){
             $connroller = 'app\\Classes\\controllers\\' . $routing[$route]['controller'] . 'Controller';

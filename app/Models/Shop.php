@@ -3,6 +3,7 @@
 namespace app\Models;
 
 use app\Classes\core\Db;
+use Cassandra\Value;
 use PDO;
 
 class Shop extends Db
@@ -20,7 +21,8 @@ class Shop extends Db
     public function searchProductForTitle($titleProduct)
     {
         $dbConnect = $this->dbConn;
-        $result2 = $dbConnect->prepare("SELECT * FROM products WHERE title = :titleProduct");
+        $result2 = $dbConnect->prepare("SELECT * FROM products WHERE title LIKE :titleProduct ");
+        $titleProduct = "%".$titleProduct."%";
         $result2->bindParam(':titleProduct', $titleProduct);
         $result2->execute();
         $searchTitleProduct = $result2->fetchAll();
@@ -44,6 +46,32 @@ class Shop extends Db
         $result2->execute();
         $minFilterProduct = $result2->fetchAll();
         return $minFilterProduct;
+    }
+
+    public function filterBrandViews()
+    {
+        $dbConnect = $this->dbConn;
+        $sql = "SELECT DISTINCT brand FROM products";
+        $result = $dbConnect->query($sql);
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $brands = $result->fetchAll();
+        $newArray=[];
+        foreach ($brands as $item=>$value){
+            $newArray[] = $value['brand'];
+        }
+        return $newArray;
+    }
+    public function filterBrand($brandProduct)
+    {
+        $dbConnect = $this->dbConn;
+        $searchBrandProduct = [];
+        foreach ($brandProduct as $brand){
+            $result = $dbConnect->prepare("SELECT * FROM products WHERE brand = :brand ");
+            $result->bindParam(':brand', $brand);
+            $result->execute();
+            $searchBrandProduct[] = $result->fetchAll();
+        }
+        return $searchBrandProduct;
     }
 
 }
