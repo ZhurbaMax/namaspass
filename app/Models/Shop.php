@@ -3,7 +3,6 @@
 namespace app\Models;
 
 use app\Classes\core\Db;
-use Cassandra\Value;
 use PDO;
 
 class Shop extends Db
@@ -38,6 +37,7 @@ class Shop extends Db
         $maxFilterProduct = $result2->fetchAll();
         return $maxFilterProduct;
     }
+
     public function shopMinfilter()
     {
         $dbConnect = $this->dbConn;
@@ -61,6 +61,7 @@ class Shop extends Db
         }
         return $newArray;
     }
+
     public function filterBrand($brandProduct)
     {
         $dbConnect = $this->dbConn;
@@ -72,6 +73,16 @@ class Shop extends Db
             $searchBrandProduct[] = $result->fetchAll();
         }
         return $searchBrandProduct;
+    }
+
+    public function addToCard($addIdCard,$addImageCard,$addPriceCard,$addQuantityCard,$addTitleCard)
+    {
+            $_SESSION['product'] = ['id_card' => $addIdCard,
+                'image_card' => $addImageCard,
+                'price_card' => $addPriceCard,
+                'quantity_card' => $addQuantityCard,
+                'title_card' => $addTitleCard];
+            return $_SESSION['product'];
     }
 
 }

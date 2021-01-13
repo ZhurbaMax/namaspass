@@ -23,6 +23,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/auth">Authorization</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/card">Card</a>
+            </li>
         </ul>
     </div>
 </nav>

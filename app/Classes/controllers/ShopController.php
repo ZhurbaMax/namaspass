@@ -17,12 +17,6 @@ class ShopController
             $searchProduct = new Shop();
             $searchProduct->searchProductForTitle($titleProd);
             $wiewsProduct = $searchProduct->searchProductForTitle($titleProd);
-            $newArr = [];
-            foreach ($wiewsProduct as $items=>$value){
-                foreach ($value as $item=>$val){
-                    $newArr[$item]=$val;
-                }
-            }
             include ('views/shop.php');
             die();
         }
@@ -30,14 +24,6 @@ class ShopController
             $poo = $_POST['brand'];
             $titleProdFilter = new Shop();
             $wiewsProduct = $titleProdFilter->filterBrand($poo);
-            $newArr = [];
-            foreach ($wiewsProduct as $items3){
-                foreach ($items3 as $item3=>$val3){
-                    foreach ($val3 as $item4=>$val4){
-                        $newArr[$item4]=$val4;
-                    }
-                }
-            }
             include ('views/brand.php');
             die();
         }
@@ -45,12 +31,6 @@ class ShopController
             $shopMaxfilter = new Shop();
             $shopMaxfilter->shopMaxfilter();
             $wiewsProduct = $shopMaxfilter->shopMaxfilter();
-            $newArr = [];
-            foreach ($wiewsProduct as $items=>$value){
-                foreach ($value as $item=>$val){
-                    $newArr[$item]=$val;
-                }
-            }
             include ('views/shop.php');
             die();
         }
@@ -58,26 +38,26 @@ class ShopController
             $shopMaxfilter = new Shop();
             $shopMaxfilter->shopMinfilter();
             $wiewsProduct = $shopMaxfilter->shopMinfilter();
-            $newArr = [];
-            foreach ($wiewsProduct as $items=>$value){
-                foreach ($value as $item=>$val){
-                    $newArr[$item]=$val;
-                }
-            }
             include ('views/shop.php');
             die();
         }
         if (empty($_POST['title'])){
             $shopProducts = new Shop();
             $wiewsProduct = $shopProducts->shopProducts();
-            $newArray = [];
-            foreach ($wiewsProduct as $items=>$value){
-                foreach ($value as $item=>$val){
-                    $newArray[$item]=$val;
-                }
-            }
             include ('views/shop.php');
         }
+
+        if (!empty($_POST['id_card'])){
+           $idCard = $_POST['id_card'];
+           $imageCard = $_POST['image_card'];
+           $priceCard = $_POST['price_card'];
+           $quantityCard = $_POST['quantity_card'];
+           $titleCard = $_POST['title_card'];
+           $addToCard = new Shop();
+           $addCard = $addToCard->addToCard($idCard,$imageCard,$priceCard,$quantityCard,$titleCard);
+        }
+
+
     }
 
 }

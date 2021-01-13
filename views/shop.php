@@ -44,6 +44,14 @@
                                 <p class="card-text brand" style="color: #1c7430; font-weight: bold;" ><?php echo $item['brand']; ?></p>
                                 <p class="card-text"><?php echo $item['description']; ?></p>
                                 <a  class="btn btn-primary">Price <?php echo $item['price']; ?> $</a>
+                                <form method="post" class="item-form">
+                                        <input type="hidden" name="id_card"  value="<?php echo $item['id_product']; ?>" class="form-control" >
+                                        <input type="hidden" name="image_card" value="<?php echo $item['image']; ?>" class="form-control">
+                                        <input type="hidden" name="price_card" value="<?php echo $item['price']; ?>" class="form-control">
+                                        <input type="hidden" name="quantity_card" value="1" class="form-control">
+                                        <input type="hidden" name="title_card" value="<?php echo $item['title']; ?>" class="form-control">
+                                        <button type="submit" class="btn btn-success">Add card</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -53,4 +61,3 @@
 
     </div>
 </div>
-
