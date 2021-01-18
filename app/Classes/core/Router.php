@@ -20,7 +20,7 @@ class Router
             $connroller_obj = new $connroller();
             $connroller_obj->{$routing[$route]['action']}();
         }else{
-            return 'нет пути';
+            echo 'there is no way';
         }
     }
 }

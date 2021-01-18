@@ -47,6 +47,7 @@
                                 <a  class="btn btn-primary">Price <?php echo $item['price']; ?> $</a>
                                 <form method="post" class="item-form">
                                     <input type="hidden" name="id_card"  value="<?php echo $item['id_product']; ?>" class="form-control" >
+                                    <input type="hidden" name="number_card"  value="1" class="form-control" >
                                     <button type="submit" class="btn btn-success">Add card</button>
                                 </form>
                             </div>

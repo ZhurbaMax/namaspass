@@ -11,16 +11,10 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Price</th>
-            <th scope="col">image</th>
+            <th scope="col">Image</th>
+            <th scope="col">Number</th>
+            <th scope="col">Delete</th>
         </tr>
         </thead>
-        <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td><?php echo $item['title']; ?></td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-        </tbody>
     </table>
 </div>

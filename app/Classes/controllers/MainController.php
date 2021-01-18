@@ -14,7 +14,7 @@ class MainController
     public function auth()
     {
         if (!empty($_SESSION['user_id'])){
-            die('вы авторизованы');
+            die('you are logged in');
         }
         $errors = [];
         $check = [];
@@ -36,7 +36,7 @@ class MainController
     public function registration()
     {
         if (!empty($_SESSION['user_id'])){
-            die('вы авторизованы');
+            die('you are logged in');
         }
         $errors = [];
         $check = [];
@@ -69,7 +69,7 @@ class MainController
         return $checkErrors;
     }
 
-    function checkRegistrationForm($checkEmail,$checkPassword,$checkLogin,$checkCountry,$checkCity,$checkErrors)
+    public function checkRegistrationForm($checkEmail,$checkPassword,$checkLogin,$checkCountry,$checkCity,$checkErrors)
     {
         if (empty($checkEmail)){
             $checkErrors[] = '* please enter email';

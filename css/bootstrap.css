@@ -10298,3 +10298,30 @@ button.btn.btn-primary {
 form.item-form {
   margin-top: 20px;
 }
+img.card-img-top.cart-img {
+  width: 50px;
+}
+th {
+  text-align: left;
+}
+td {
+  text-align: left;
+}
+.total {
+  text-align: right;
+  margin-top: 60px;
+  color: #668eac;
+  font-size: 20px;
+  font-weight: 900;
+}
+span.cost {
+  color: #009f24;
+  font-weight: 500;
+}
+h3.is_empty {
+  text-align: center;
+  margin-top: 60px;
+  color: #707070;
+  border: 2px solid #ccc;
+  padding: 40px;
+}

@@ -46,18 +46,10 @@ class ShopController
             $wiewsProduct = $shopProducts->shopProducts();
             include ('views/shop.php');
         }
-
         if (!empty($_POST['id_card'])){
-           $idCard = $_POST['id_card'];
-           $imageCard = $_POST['image_card'];
-           $priceCard = $_POST['price_card'];
-           $quantityCard = $_POST['quantity_card'];
-           $titleCard = $_POST['title_card'];
-           $addToCard = new Shop();
-           $addCard = $addToCard->addToCard($idCard,$imageCard,$priceCard,$quantityCard,$titleCard);
+            $_SESSION['cart']['id'][] = $_POST['id_card'];
+            $_SESSION['cart']['number']['quantity'] = $_POST['number_card'];
         }
-
-
     }
 
 }

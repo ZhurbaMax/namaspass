@@ -7,6 +7,7 @@ use PDO;
 
 class Shop extends Db
 {
+
     public function shopProducts()
     {
         $dbConnect = $this->dbConn;
@@ -73,16 +74,6 @@ class Shop extends Db
             $searchBrandProduct[] = $result->fetchAll();
         }
         return $searchBrandProduct;
-    }
-
-    public function addToCard($addIdCard,$addImageCard,$addPriceCard,$addQuantityCard,$addTitleCard)
-    {
-            $_SESSION['product'] = ['id_card' => $addIdCard,
-                'image_card' => $addImageCard,
-                'price_card' => $addPriceCard,
-                'quantity_card' => $addQuantityCard,
-                'title_card' => $addTitleCard];
-            return $_SESSION['product'];
     }
 
 }
