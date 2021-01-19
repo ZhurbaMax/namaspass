@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <div class="h2 mt-5 mb-5" style="text-align: center" > Registration </div>
+            <div class="h2 mt-5 mb-5 text-align"> Registration </div>
         </div>
     </div>
     <div class="row">
         <div class="col-1"></div>
         <div class="col-8">
-            <form method="post">
-                <div style="color: #a71d2a">
+            <form method="post" class="reg-auth">
+                <div class="errors">
                     <? foreach ($errors as $error): ?>
                         <p> <?php echo $error; ?></p>
                     <? endforeach; ?>

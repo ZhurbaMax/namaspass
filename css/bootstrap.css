@@ -10325,3 +10325,27 @@ h3.is_empty {
   border: 2px solid #ccc;
   padding: 40px;
 }
+.text-align{
+  text-align: center;
+}
+.errors{
+  color: #a71d2a;
+}
+footer {
+  padding: 60px;
+  background: #2b74a9;
+}
+h5.footer-col {
+  color: #fff;
+  text-align: center;
+}
+form.reg-auth {
+  margin: 120px auto;
+}
+.brand{
+  color: #1c7430;
+  font-weight: bold;
+}
+.Cart_is_empty {
+  margin: 220px auto;
+}

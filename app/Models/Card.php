@@ -22,11 +22,9 @@ class Card extends Db
     {
         $dbConnect = $this->dbConn;
         $result = $dbConnect->prepare("SELECT price FROM products WHERE id_product = :addIdCards");
-        //$addIdCards = implode(', ', $addIdCards);
         $result->bindParam(':addIdCards', $addIdCards);
         $result->execute();
         $sum = $result->fetchColumn();
         return $sum;
     }
-
 }

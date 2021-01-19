@@ -7,14 +7,14 @@
     </div>
     <table class="table">
         <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Price</th>
-            <th scope="col">Image</th>
-            <th scope="col">Number</th>
-            <th scope="col">Delete</th>
-        </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+                <th scope="col">Number</th>
+                <th scope="col">Delete</th>
+            </tr>
         </thead>
     </table>
 </div>

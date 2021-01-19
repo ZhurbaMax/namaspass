@@ -14,48 +14,50 @@ class MainController
     public function auth()
     {
         if (!empty($_SESSION['user_id'])){
-            die('you are logged in');
-        }
-        $errors = [];
-        $check = [];
-        $password = $_POST['password'];
-        $login = $_POST['login'];
-        if (!empty($_POST)) {
-            $checkAuthForm = new MainController();
-            $check =  $checkAuthForm->checkAuthForm($login,$password,$errors);
-        }
-        if (empty($check)) {
-            $authUser = new User();
-            $authUser->authUser($login, $password);
+            include ('views/you-are-logged.php');
         }else{
-            $errors = $check;
+            $errors = [];
+            $check = [];
+            $password = $_POST['password'];
+            $login = $_POST['login'];
+            if (!empty($_POST)) {
+                $checkAuthForm = new MainController();
+                $check =  $checkAuthForm->checkAuthForm($login,$password,$errors);
+                if (empty($check)) {
+                    $authUser = new User();
+                    $authUser->authUser($login, $password);
+                }else{
+                    $errors = $check;
+                }
+            }
+            include ('views/auth.php');
         }
-        include ('views/auth.php');
     }
 
     public function registration()
     {
         if (!empty($_SESSION['user_id'])){
-            die('you are logged in');
-        }
-        $errors = [];
-        $check = [];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $login = $_POST['login'];
-        $country = $_POST['country'];
-        $city = $_POST['city'];
-        if (!empty($_POST)){
-            $checkRegistrationForm = new MainController();
-            $check = $checkRegistrationForm->checkRegistrationForm($email,$password,$login,$country,$city,$errors);
-        }
-        if (empty($check)){
-            $additionUser = new User();
-            $additionUser->additionUser($email,$password,$login,$country,$city);
+            include ('views/you-are-logged.php');
         }else{
-            $errors = $check;
+            $errors = [];
+            $check = [];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $login = $_POST['login'];
+            $country = $_POST['country'];
+            $city = $_POST['city'];
+            if (!empty($_POST)){
+                $checkRegistrationForm = new MainController();
+                $check = $checkRegistrationForm->checkRegistrationForm($email,$password,$login,$country,$city,$errors);
+            }
+            if (empty($check)){
+                $additionUser = new User();
+                $additionUser->additionUser($email,$password,$login,$country,$city);
+            }else{
+                $errors = $check;
+            }
+            include ('views/registration.php');
         }
-        include ('views/registration.php');
     }
 
     public function checkAuthForm($checkLogin,$checkPassword,$checkErrors)
@@ -90,7 +92,7 @@ class MainController
             $checkErrors[] = '* you have exceeded the limit of 90 characters';
         }
         if (strlen($checkPassword) < 6){
-            $checkErrors[] = ' * you have not entered enough characters, please enter more than 6';
+            $checkErrors[] = ' * enter at least 6 characters';
         }
         if (strlen($checkLogin) > 100){
             $checkErrors[] = '* you have exceeded the limit of 100 characters';
@@ -103,5 +105,4 @@ class MainController
         }
         return $checkErrors;
     }
-
 }
