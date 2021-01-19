@@ -17,7 +17,7 @@ class FilterBrandController
             $filterBrand = new Shop();
             $filterBrands = $filterBrand->filterBrandViews();
             $transferTo = new ViewController();
-            $transferTo->transferTo('views/brand.php', $wiewsProduct, $filterBrands);
+            $transferTo->transferTo('views/shop.php', $wiewsProduct, $filterBrands);
         }
     }
 }

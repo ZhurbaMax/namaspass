@@ -66,13 +66,10 @@ class Shop extends Db
     public function filterBrand($brandProduct)
     {
         $dbConnect = $this->dbConn;
-        $searchBrandProduct = [];
-        foreach ($brandProduct as $brand){
-            $result = $dbConnect->prepare("SELECT * FROM products WHERE brand = :brand ");
-            $result->bindParam(':brand', $brand);
-            $result->execute();
-            $searchBrandProduct[] = $result->fetchAll();
-        }
+        $in  = str_repeat('?,', count($brandProduct) - 1) . '?';
+        $result = $dbConnect->prepare("SELECT * FROM products WHERE brand IN ($in)");
+        $result->execute($brandProduct);
+        $searchBrandProduct = $result->fetchAll();
         return $searchBrandProduct;
     }
 }
