@@ -10310,6 +10310,7 @@ td {
 .total {
   text-align: right;
   margin-top: 60px;
+  margin-bottom: 60px;
   color: #668eac;
   font-size: 20px;
   font-weight: 900;

@@ -23,7 +23,7 @@ class Router
             $connroller_obj = new $connroller();
             $connroller_obj->{$routing[$route]['action']}();
         }else{
-            echo 'there is no way';
+            include ('views/404.php');
         }
     }
 }

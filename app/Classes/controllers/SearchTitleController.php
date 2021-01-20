@@ -15,10 +15,8 @@ class SearchTitleController
             $searchProduct = new Shop();
             $searchProduct->searchProductForTitle($titleProd);
             $wiewsProduct = $searchProduct->searchProductForTitle($titleProd);
-
             $filterBrand = new Shop();
             $filterBrands = $filterBrand->filterBrandViews();
-
             $transferTo = new ViewController();
             $transferTo->transferTo('views/shop.php', $wiewsProduct, $filterBrands);
         }
